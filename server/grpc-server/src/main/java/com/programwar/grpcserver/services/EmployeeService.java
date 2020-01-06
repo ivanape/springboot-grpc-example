@@ -2,15 +2,15 @@ package com.programwar.grpcserver.services;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.programwar.grpcexample.server.Employee;
-import com.programwar.grpcexample.server.EmployeeId;
-import com.programwar.grpcexample.server.EmployeeList;
-import com.programwar.grpcexample.server.Response;
-import com.programwar.grpcexample.server.EmployeeServiceGrpc.EmployeeServiceImplBase;
+import com.programwar.grpcexample.Employee;
+import com.programwar.grpcexample.EmployeeId;
+import com.programwar.grpcexample.EmployeeList;
+import com.programwar.grpcexample.Response;
+import com.programwar.grpcexample.EmployeeServiceGrpc.EmployeeServiceImplBase;
 
 import org.lognet.springboot.grpc.GRpcService;
 
-import com.programwar.grpcexample.server.Empty;
+import com.programwar.grpcexample.Empty;
 
 import io.grpc.stub.StreamObserver;
 
@@ -18,14 +18,10 @@ import io.grpc.stub.StreamObserver;
 public class EmployeeService extends EmployeeServiceImplBase {
 
     private static ConcurrentHashMap<String, Employee> entities = new ConcurrentHashMap<String, Employee>();
-    private static long counter = 2;
   
     @Override
     public void create(final Employee request, final StreamObserver<Response> responseObserver) {
-
-        request.toBuilder().setId(counter);
-        entities.put(String.valueOf(counter), request);
-        counter = counter + 1;
+        entities.put(String.valueOf(request.getId()), request);
         responseObserver.onNext(Response.newBuilder().setCode(201).setMessage("CREATED").build());
         responseObserver.onCompleted();
     }

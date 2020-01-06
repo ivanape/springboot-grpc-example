@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package com.programwar.grpcexample.server;
+package com.programwar.grpcexample;
 
 option java_multiple_files = true;
 option java_generic_services = true;
@@ -32,8 +32,8 @@ message Response {
   string message = 2;
 }
 service EmployeeService {
-  rpc Create(Employee) returns (Response);
-  rpc List(Empty) returns (EmployeeList);
-  rpc Update(Employee) returns (Response);
-  rpc Delete(EmployeeId) returns (Response);
+  rpc create(Employee) returns (Response);
+  rpc list(Empty) returns (EmployeeList);
+  rpc update(Employee) returns (Response);
+  rpc delete(EmployeeId) returns (Response);
 }
