@@ -12,7 +12,7 @@
 	<groupId>com.programwar</groupId>
 	<artifactId>grpc-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>grpc-server</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
